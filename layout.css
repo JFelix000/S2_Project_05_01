@@ -9,7 +9,7 @@
    Author: 
    Date:   
    
-   Filename: sp_layout.css
+   Filename: layout.css
 
 */
 
@@ -17,7 +17,7 @@
 html {
     height: 100%;
 }
-
+/* margin right and left are set to auto so that they can be centered in the page. Min and Max widths are like that because those are the usual pixels on screens nowadays. */
 body {
     width: 95%;
     max-width: 960px;
@@ -33,6 +33,7 @@ header, nav, ul, li, a {
 }
 
 /* Row Styles */
+/* This is simply the phrases that need to be put in whenever you want to avoid container collapse. */
 .row::after {
     clear: both;
     content: "";
@@ -40,25 +41,27 @@ header, nav, ul, li, a {
 }
 
 /* Page Header Styles */
+/* These are child of selectors because they are under main sections. This needs to be specific or else it won't affect the code at all. */
 body >header> img{
     display: block;
     width: 70%;
     float: left;
 }
-
+/* Since these are just nested elements, they can be left that way with just a space */
 body header nav {
     float: left;
     padding-right: 2%;
     padding-left: 2%;
     width: 30%;
 }
-
+/* This is only affecting the nav links, so we needed to affect the a tag where the nav links live in */
 header nav a {
     display: block;
     width: 100%;
 }
 
 /* Horizontal Navigation List Styles */
+/* The class of horizontal is changed to make a display of block and smaller width. We identify the classes with periods. */
 .horizontal li {
     display: block;
     width: 12.5%;
@@ -66,6 +69,7 @@ header nav a {
 }
 
 /* Topics Styles */
+/* Since we want to target the ul that has the topics name, we have to put the ID topics so it only styles that code and not the other ul li's that are in the page */
 ul#topics li {
     display: block;
     width: 20%;
@@ -73,7 +77,7 @@ ul#topics li {
     margin-left: 0%;
     margin-right: 1.5%;
 }
-
+/* The instructions clearly said to make the first and last of the ul items with those respected margins, so you need to use first of type and last of type pseudo classes. */
 ul#topics:first-of-type {
     margin-left: 7.75%;
 }
@@ -81,7 +85,7 @@ ul#topics:first-of-type {
 ul#topics:last-of-type {
     margin-right: 7.75%;
 }
-
+/* There are images in the page that we don't want to style, so we make sure to target only the ul with the id of topics so it can make the correct changes. */
 ul#topics img {
     display: block;
     width: 50%;
@@ -90,11 +94,13 @@ ul#topics img {
 }
 
 /* HR Styles */
+/* the HR is the horizontal lines and they make changes to the width. */
 hr {
     width: 50%;
 }
 
 /* Customer Comment Styles */
+/* Putting only 2 commands after the margin property affects the top and bottom and the left and right as pairs, so that the code can look cleaner; we are lazy coders */
 ul#comments {
     width: 75%;
     margin: 40px auto;
@@ -114,12 +120,18 @@ ul#comments li {
     margin-left: 5%;
     margin-right: 5%;
 }
-
+/* There was a container collapse with the comments section so we made it so it has these rules that totally fix container collapse. */
 #comments::after {
     clear: both;
     content: "";
     display: table;
 }
+
+li#customer p {
+    float: left;
+    width: 70%;
+}
 /* Footer Styles */
-
-
+footer {
+    clear: both;
+}
